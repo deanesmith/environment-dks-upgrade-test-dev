@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: deanesmith
+  repo: dks-cj10upg
+  url: https://github.com/deanesmith/dks-cj10upg.git
+  version: ""
+  versionURL: ""

@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:dks-upgrade-test/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: dsmith@cloudbees.com
+  token: vault:dks-upgrade-test/pipelineUser:token
+  username: deanesmith
+prow:
+  hmacToken: vault:dks-upgrade-test/prow:hmacToken

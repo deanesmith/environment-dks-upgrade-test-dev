@@ -1,39 +1,85 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: dks-upgrade-test
+  devEnvApprovers:
+  - deanesmith
+  environmentGitOwner: deanesmith
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: apps-dev-229310
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: us-east4-c
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    cloud_dns_secret_name: external-dns-gcp-sa
+    domain: dks-cjxd.deanesmith.jenkins-x.rocks
+    externalDNS: true
+    namespaceSubDomain: -jx.
+    tls:
+      email: dsmith@cloudbees.com
+      enabled: true
+      production: true
+  key: dev
+  repository: environment-dks-upgrade-test-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-dks-upgrade-test-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-dks-upgrade-test-production
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  cloud_dns_secret_name: external-dns-gcp-sa
+  domain: dks-cjxd.deanesmith.jenkins-x.rocks
+  externalDNS: true
+  namespaceSubDomain: -jx.
   tls:
-    email: ""
-    enabled: false
-    production: false
+    email: dsmith@cloudbees.com
+    enabled: true
+    production: true
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://dks-upgrade-test-logs-b41f1cbe-8b13-4861-a01c-428b359a7
   reports:
     enabled: true
-    url: ""
+    url: gs://dks-upgrade-test-reports-2d71f223-4c57-4105-8a48-e9a1ef
   repository:
     enabled: true
-    url: ""
+    url: gs://dks-upgrade-test-repository-b07134f7-3cd6-41e3-9150-48b
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: 2.1.13+cjxd.9
+  ref: v0.0.31
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow

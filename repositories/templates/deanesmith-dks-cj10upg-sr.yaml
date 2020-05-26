@@ -1,0 +1,21 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: deanesmith
+    provider: github
+    repository: dks-cj10upg
+  name: deanesmith-dks-cj10upg
+spec:
+  description: Imported application for deanesmith/dks-cj10upg
+  httpCloneURL: https://github.com/deanesmith/dks-cj10upg.git
+  org: deanesmith
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: dks-cj10upg
+  scheduler:
+    kind: ""
+    name: ""
+  url: https://github.com/deanesmith/dks-cj10upg.git

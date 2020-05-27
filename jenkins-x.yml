@@ -238,10 +238,14 @@ pipelineConfig:
             - apply
             - --boot
             - --remote
+            - --verbose
             - --name
             - jenkins-x
             - --provider-values-dir
             - ../kubeProviders
+            env:
+            - name: JX_LOG_LEVEL
+              value: debug            
             command: jx
             dir: /workspace/source/env
             name: install-jenkins-x
